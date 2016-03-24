@@ -1,0 +1,22 @@
+{
+  "name": "easytpl",
+  "description": "a simple JavaScript template engine",
+  "main": "index.js",
+  "authors": [
+    "ruoyu"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "JavaScript",
+    "template",
+    "engine",
+    "tpl"
+  ],
+  "homepage": "https://github.com/jirengu/easytpl",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "name": "hunger-test",
+  "version": "1.0.0",
+  "description": "hunger npm test demo",
+  "main": "./lib/index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "./node_modules/mocha/bin/mocha test/test.js"
+  },
+  "keywords": [
+    "hunger",
+    "valley",
+    "test",
+    "demo"
+  ],
+  "author": "ruoyu",
+  "license": "ISC",
+  "dependencies": {
+    "chai": "^3.4.1"
+  },
+  "devDependencies": {
+    "mocha": "^2.3.4"
+  }
+}

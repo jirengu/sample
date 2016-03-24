@@ -1,0 +1,91 @@
+@charset "UTF-8";
+/**
+ * 
+ * @authors hunger (hunger@jirengu.com)
+ * @date    2015-10-21 18:48:30
+ * @version $Id$
+ */
+
+
+
+
+	.ct{
+		width: 1000px;
+		margin: 0 auto;
+	}
+
+
+	#jrg-gotop{
+		width: 32px;  
+		cursor: pointer; 
+		border: 1px solid #ccc; 
+		padding: 10px; 
+	}
+
+
+	.carousel{
+		position: relative;
+		width: 1000px;
+		height: 300px;
+		overflow: hidden;
+	}
+	.carousel img{
+		width: 1000px;
+		height: 800px;
+	}
+	.carousel .img-ct{
+		position: relative;
+		top: 0;
+		left: 0;
+	}
+	.carousel .img-ct li{
+		display: inline-block;
+	}
+	.carousel .arrow{
+		position: absolute;
+	    top: 50%;
+	    margin-top: -15px;
+	    width: 30px;
+	    height: 30px;
+	    line-height: 30px;
+	    text-align: center;
+	    background: #4E443C;
+	    color: #fff;
+	    border-radius: 30px;
+	    box-shadow: 0 0 2px #999;
+	    opacity: 0.8
+	}
+	.carousel .arrow:hover {
+	    opacity: 1;
+	}
+	.carousel .pre{
+		left: 10px;
+	}
+	.carousel .next{
+		right: 10px;
+	}
+
+	.intro p {
+	    text-align: center;
+	    font-size: 40px;
+	    margin: 20px;
+	    color: #E0983B;
+	    display: none;
+	}
+	
+	.img-cells{
+		margin-top: 30px;
+		margin-bottom: 60px;
+	}
+	.img-cells ul{
+		margin-left: -20px;
+	}
+	.img-cells li{
+		float: left;
+		margin-left: 20px;
+		margin-top: 20px;
+	}
+
+	.img-cells li img{
+		width: 320px;
+	}

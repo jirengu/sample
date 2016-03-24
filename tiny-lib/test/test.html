@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+</head>
+<body>
+    <script type="text/javascript">
+    // var obj = {
+  
+    // };
+
+    // for(var key in obj){
+    // 	console.log('has value');
+    // }
+
+    var arr = [2,1,12,0,0,0,-1,56,0,-1,34];
+
+    function arrayMax(arr){
+    	if(arr.length === 0){
+    		return false;
+    	}
+    	var value = arr[0];
+    	for(var i=1; i<arr.length;i++){
+    		if(arr[i] < value){
+    			value = arr[i];
+    		}
+    	}
+    	return value;
+    }
+    var max = arrayMax(arr);
+    console.log(max);
+
+    function sort(arr){
+    	arr.sort(function(a,b){
+    		return a<b;
+    	});
+    }
+
+    function unique(arr){
+    	var dict = {};
+    	for(var i=0;i<arr.length; i++){
+    		if(dict[arr[i]] === void 0 ){
+    			dict[arr[i]] = 1;
+    		}else{
+    			arr.splice(i,1);
+    			i--;
+    		}
+    	}
+    	return arr;
+    }
+
+
+    </script>
+</body>
+</html>

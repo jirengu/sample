@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>Bootstrap 101 Template</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/normalize.css">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <style type="text/css">
+		.mod1{
+			background: red;
+		}
+		.mod2{
+			background-color: blue;
+		}
+		.row>div{
+			background: green;
+			border: 1px solid #fff;
+			min-height: 100px;
+		}
+
+
+    </style>
+  </head>
+  <body>
+    <div class="container">
+    	<div class="mod1">
+		  <h1>hello</h1>
+		  <h1>hello</h1>
+    	</div>
+	</div>
+
+	<div class="container">
+		<div class="row">
+		  <div class="col-lg-2 col-md-3 col-sm-6">大屏幕6列，普通4， 平板2， 手机1</div>
+		  <div class="col-lg-2 col-md-3 col-sm-6">.col-md-1</div>
+		  <div class="col-lg-2 col-md-3 col-sm-6">大屏幕6列，普通4， 平板2， 手机1</div>
+		  <div class="col-lg-2 col-md-3 col-sm-6">.col-md-1</div>
+		  <div class="col-lg-2 col-md-3 col-sm-6">大屏幕6列，普通4， 平板2， 手机1</div>
+		  <div class="col-lg-2 col-md-3 col-sm-6">.col-md-1</div>
+		</div>
+		<div class="row">
+		  <div class="col-sm-9">
+		    Level 1: .col-sm-9
+		    <div class="row">
+		      <div class="col-xs-8 col-sm-6">
+		        Level 2: .col-xs-8 .col-sm-6
+		      </div>
+		      <div class="col-xs-4 col-sm-6">
+		        <p class="lead">bles.less 文件中定义的两个 Less 变量决定了排版尺寸：@font-size-base 和 @line-height-base。第一个变量定义了全局 font-size 基准，第二个变量是 line-height 基准。我们使用这些变量和一些简单的公式计算出其它所有页面元素的 margin、 padding 和 line-height。自定义这些变量即可改变 Bootstrap 的默认样式。</p>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+		<div class="panel">
+			<dl class="dl-horizontal">
+			  <dt>Description lists</dt>
+			  <dd>A description list is perfect for defining terms.</dd>
+			  <dd>A description list is perfect for defining terms.</dd>
+			  <dt>Description lists</dt>
+			  <dd>A description list is perfect for defining terms.</dd>
+			  <dd>A description list is perfect for defining terms.</dd>
+			</dl>
+			<table class="table table-striped">
+			  <tr><th>ddd</th><th>ffff</th></tr>
+			  <tr class="info"><td>2222</td><td>fffff</td></tr>
+			  <tr><td>2222</td><td>fffff</td></tr>
+			  <tr class="info"><td>2222</td><td>fffff</td></tr>
+			</table>
+		</div>
+
+		<p class="lead text-right">bles.less </p>
+		<button type="button" class="btn btn-primary">（首选项）Primary</button>
+		<a class="btn btn-primary">（首选项）Primary</a>
+		<p class="bg-info"><span class="glyphicon glyphicon-grain"></span> hellooddd  </p>
+	
+		<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+  Launch demo modal
+</button>
+
+<a class="btn btn-open btn-primary" href="javascript:void(0)">打开</a>
+<!-- Modal -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+	      </div>
+	      <div class="modal-body">
+	        ...
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        <button type="button" class="btn btn-primary">Save changes</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
+	<button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="left" title="Tooltip on left">Tooltip on left</button>
+	</div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <script type="text/javascript">
+    	$('.btn-open').on('click', function(){
+    		$('#myModal').modal('toggle');
+    	})
+    	$('[data-toggle="tooltip"]').tooltip()
+
+    </script>
+  </body>
+</html>

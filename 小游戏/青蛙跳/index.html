@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>青蛙跳小游戏</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<script type="text/javascript" src="../bower_components/jquery/dist/jquery.min.js"></script>
+<style type="text/css">
+	.mod-frog li{
+		width: 50px;
+		height: 40px;
+		list-style: none;
+		display: inline-block;
+		cursor: pointer;
+	}
+	.frog-l{
+		background: url(imgs/frog-l.jpg) 0 0 no-repeat;
+		background-size: 50px 40px;
+	}
+	.frog-r{
+		background: url(imgs/frog-r.jpg) 0 0 no-repeat;
+		background-size: 50px 40px;
+	}
+
+
+</style>
+</head>
+<body>
+    <div class="mod-frog">
+    	<ul>
+    		<li class="frog-r">1</li>
+    		<li class="frog-r">2</li>
+    		<li class="frog-r a">3</li>
+    		<li class="space"></li>
+    		<li class="frog-l">4</li>
+    		<li class="frog-l b">5</li>
+    		<li class="frog-l">6</li>
+    	</ul>
+    </div>
+    <script type="text/javascript">
+    //当点击frog-l时，如果它左边是空的，和空的交换位置。 如果他左边不是空的，但左边的左边是空的，和空的位置交换
+    
+    $s = $('.space');
+
+    $('.frog-l').on('click', function(){
+    	var $this = $(this);
+    	if($this.prev().length == 0){
+    		return;
+    	}
+    	var $prev = $this.prev();
+    	if($prev.hasClass('space')){
+    		swap($this, $prev);
+    	}else if($prev.prev().length > 0 && $prev.prev().hasClass('space')){
+    		swap($this, $prev.prev());
+    	}
+    	if(isSuccess()){
+    		alert('恭喜，完成任务');
+    	}
+    });
+    $('.frog-r').on('click', function(){
+    	var $this = $(this);
+    	if($this.next().length == 0){
+    		return;
+    	}
+    	var $next = $this.next();
+    	if($next.hasClass('space')){
+    		swap($this, $next);
+    	}else if($next.next().length > 0 && $next.next().hasClass('space')){
+    		swap($this, $next.next());
+    	}
+    	if(isSuccess()){
+    		alert('恭喜，完成任务');
+    	}
+    });
+
+   	function swap($a, $b){
+   		var $bb = $('<span>');
+   		$bb.insertAfter($b);
+   		$b.insertAfter($a);
+   		$a.insertAfter($bb);
+   		$bb.remove();
+   	}
+
+   	function isSuccess(){
+   		return $('.space').prevAll('.frog-l').length === 3  && $('.space').nextAll('.frog-r').length === 3 
+   	}
+
+    </script>
+</body>
+</html>

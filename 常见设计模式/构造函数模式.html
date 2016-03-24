@@ -1,0 +1,11 @@
+<script>
+function Person(name, age){
+  this.name = name;
+  this.age = age;
+}
+Person.prototype.sayName = function(){
+  return this.name;
+};
+var student = new Person("若愚", 30);
+console.log(student);
+</script>

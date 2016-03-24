@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>两栏布局</title>
+    <style>
+    #header,
+    #footer {
+        background: red;;
+        height: 40px;
+    }
+    #content{
+        overflow: auto;
+    }
+    .fl{
+        float: left;
+    }
+    .main {
+        width: 100%;
+        min-height: 500px;
+        background: #0000ee;
+    }
+    .wrap{
+        margin-right: 200px;
+    }
+        .aside{
+            width: 200px;
+            background: #00d6b2;
+            min-height: 500px;
+            margin-left: -200px;
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body>
+<div id="header">头部</div>
+<div id="content">
+    <div class="main fl">
+        <div class="wrap">
+            主区块sssdssdddd
+            主区块sssdssdddd主 区块sss dssd ddd  主区块  s ss dss d ddd 主区块sssdssdddd
+        </div>
+    </div>
+    <div class="aside fl">侧边栏aaa</div>
+</div>
+<div id="footer">footer</div>
+</body>
+</html>

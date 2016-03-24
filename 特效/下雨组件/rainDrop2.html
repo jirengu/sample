@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>雨滴效果</title>
+
+	<script src="jquery-1.11.1.js"></script>
+</head>
+<body>
+	<button id="btn1">雷阵雨</button>
+	<script>
+	//<div style='position: fixed; width: 13px; height: 13px; top: -13px;'><img src='http://gitlab.jirengu.com/uploads/company-sys/test-jirengu-com/5dcd85a204/dew-icon.png' alt=''/></div>
+
+	var Rain = (function(){
+
+		var $ct = $(document);
+
+		var clock = null;
+
+
+		function start(arg){
+			var opts ={}
+			if(arg 是空的){
+				opts = {xxxx}
+			}else if(arg 是字符串){
+				switch(arg){
+					case: 'small':
+					opts = {};
+					case: 'middle':
+					opts = {}
+					default:
+					opts = {}
+				}
+			}else{
+				opts = arg
+			}
+
+			_start(opts);
+		}
+
+
+		function _start(opts){
+
+			opts.$ct.css('position', 'realtive');
+
+
+			clock = setInterval(function(){
+				rainDrop();
+			}, opts.freq );
+
+		}
+
+		function stop(){
+			clearInterval(clock);
+		}
+
+		function rand(a,b){
+			return a + (Math.floor(Math.random() * (b - a)));
+		}
+
+		function rainDrop(){
+			var $div = $("<div style='position: absolute; width: 13px; height: 13px; top: -13px;'><img src='http://gitlab.jirengu.com/uploads/company-sys/test-jirengu-com/5dcd85a204/dew-icon.png' alt=''/></div>");
+
+			var start_pos_x = rand(0, opts.$ct.width()),
+				start_pos_y = -13,
+				end_pos_x = start_pos_x + rand(0-opts.offset, opts.offset) ,
+				end_pos_y = 2*opts.$ct.height();
+
+
+			$div.css( { left: start_pos_x, top: start_pos_y} );
+			$div.animation( {left: end_pos_x, top: end_pos_y}  opts.speed, function(){
+				$(this).remove();
+			});
+
+		}
+
+
+		return {
+			start: start,
+			stop: stop
+		}
+	})();
+
+
+
+	Rain.start(); //small middle big strom
+
+	Rain.start({
+		ct: $el,
+		speed: 100,
+		freq: 100,
+		offset: 50
+	});
+	Rain.stop();
+
+
+	</script>
+</body>

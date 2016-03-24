@@ -1,0 +1,62 @@
+@color: red;
+
+#header {
+  color: @color;
+}
+h2 {
+  color: @color;
+}
+
+.rounded-corners (@radius: 5px){
+	border-radius: @radius;
+  -webkit-border-radius: @radius;
+  -moz-border-radius: @radius;
+}
+
+#header {
+  .rounded-corners;
+}
+#footer {
+  .rounded-corners(10px);
+}
+
+#header h1{
+
+}
+#header h1 .logo{
+
+}
+#header h1 .logo span{
+
+}
+
+#header p a:hover{
+
+}
+
+
+
+
+.clearfix{
+	&:before,&:after{
+		content: ' ';
+		display: table;
+	}
+	&:after{
+		clear: both;
+	}
+}
+
+
+
+#header {
+  h1 {
+    font-size: 26px;
+    font-weight: bold;
+  }
+  p { font-size: 12px;
+    a { text-decoration: none;
+      &:hover { border-width: 1px }
+    }
+  }
+}

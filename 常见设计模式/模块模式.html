@@ -1,0 +1,17 @@
+<script type="text/javascript">
+var Person = (function(){
+  var name = "hunger";
+  return {
+      changeName: function(newName){
+          name = newName;
+      },
+      sayName: function(){
+          console.log(name);
+      }
+  };
+})();
+
+Person.sayName();
+Person.changeName("ruoyu");
+Person.sayName();
+</script>

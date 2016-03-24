@@ -1,0 +1,13 @@
+<script>
+   function createPerson(opts){
+     var person = {
+       name: opts.name||'hunger'
+     };
+     person.sayName: function(){
+       console.log(this.name);
+     }
+     return person;
+   }
+   var p1 = createPerson({name:'ruoyu'});
+   var p2 = createPerson({name: '饥人谷'});
+</script>

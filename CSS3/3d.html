@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>3d</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<style>
+	.ct{
+		margin-top: 20px;
+	}
+	.box{
+		width: 100px;
+		height: 100px;
+		background-color: red;
+		margin-top: 20px;
+		display: inline-block;
+		/*transition: all .3s;*/
+	}
+	.box1{
+	}
+	.box2:hover{
+		transform:  perspective(200px) rotateX(45deg);
+	}
+	.box3:hover{
+		transform: perspective(200px) rotateY(45deg);
+	}
+	.box4:hover{
+		transform: perspective(1200px) rotateZ(45deg);
+	}
+	.box5:hover{
+		transform: perspective(101px) translateZ(100px);
+	}
+	
+	@keyframes rotate{
+		0% { transform:rotateY(0deg); }
+		10% { transform:rotateY(-40deg) }
+		20% { transform:rotateY(-80deg) }
+		30% { transform:rotateY(-120deg) }
+		40% { transform:rotateY(-160deg) }
+		50% { transform:rotateY(-200deg) }
+		60% { transform:rotateY(-240deg) }
+		70% { transform:rotateY(-280deg) }
+		80% { transform:rotateY(-320deg) }
+		90% { transform:rotateY(-360deg); }
+	}
+	.stage_area {
+		min-height: 100px;
+		margin-left: auto;
+		margin-right: auto;
+		padding: 100px 50px;
+		background-color: #f0f0f0;
+		box-shadow: inset 0 0 3px rgba(0,0,0,.35);	
+		
+		 -webkit-perspective: 800px;
+		   -moz-perspective: 800px;
+	            perspective: 800px;
+		
+		/*-webkit-transition: top .5s;*/
+
+		position: relative;
+		top: 0;
+	}
+
+	.container {
+		width: 128px;
+		height: 100px;
+		margin-left: -64px;
+		
+/*		-webkit-transition: -webkit-transform 1s;
+		   -moz-transition: -moz-transform 1s;
+		        transition: transform 1s;*/
+		
+		-webkit-transform-style: preserve-3d;
+		  -moz-transform-style: preserve-3d;
+		       transform-style: preserve-3d;	
+				animation: rotate 10s ;
+		position: absolute;
+		left: 50%;
+	}
+	img{
+		width: 128px;
+		position: absolute;
+		bottom: 0px;
+	}
+	img:nth-child(1 ) { transform: rotateY(  0deg ) translateZ(195px) ; }
+	img:nth-child(2) { transform: rotateY(  40deg ) translateZ(195px) ; }
+	img:nth-child(3) { transform: rotateY(  80deg ) translateZ(195px); }
+	img:nth-child(4) { transform: rotateY( 120deg ) translateZ(195px); }
+	img:nth-child(5) { transform: rotateY( 160deg ) translateZ(195px); }
+	img:nth-child(6) { transform: rotateY( 200deg )  translateZ(195px); }
+	img:nth-child(7) { transform: rotateY( 240deg )  translateZ(195px); }
+	img:nth-child(8) {  transform:rotateY( 280deg ) translateZ(195px) ; }
+	img:nth-child(9) {   transform: rotateY( 320deg )translateZ(195px); }
+
+
+
+
+
+</style>
+</head>
+<body>
+<div class="ct ct1">
+	<div class="box box1">1</div>
+	<div class="box box2">rotateX</div>
+	<div class="box box3">rotateY</div>
+	<div class="box box4">rotateZ</div>
+	<div class="box box5">translateZ</div>
+</div>
+<div class="stage_area">
+	<div class="container">
+		<img src="http://image.zhangxinxu.com/image/study/s/s128/mm1.jpg" alt="">
+		<img src="http://image.zhangxinxu.com/image/study/s/s128/mm8.jpg" alt="">
+		<img src="http://image.zhangxinxu.com/image/study/s/s128/mm3.jpg" alt="">
+		<img src="http://image.zhangxinxu.com/image/study/s/s128/mm4.jpg" alt="">
+		<img src="http://image.zhangxinxu.com/image/study/s/s128/mm6.jpg" alt="">
+		<img src="http://image.zhangxinxu.com/image/study/s/s128/mm7.jpg" alt="">
+		<img src="http://image.zhangxinxu.com/image/study/s/s128/mm10.jpg" alt="">
+		<img src="http://image.zhangxinxu.com/image/study/s/s128/mm13.jpg" alt="">
+		<img src="http://image.zhangxinxu.com/image/study/s/s128/mm15.jpg" alt="">
+	</div>
+</div>
+
+    
+</body>
+</html>

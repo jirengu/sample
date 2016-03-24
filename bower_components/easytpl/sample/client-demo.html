@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../lib/easyTpl.js"></script>
+    <script>
+        var tpl = 'hello my name is {{name}}. I have a {{dog.age}} year old dog. His color is {{dog.color}}.';
+
+        var data = {
+            name: 'hunger',
+            dog: {
+                color: 'yellow',
+                age: 2
+            }
+        };
+
+        var str = easyTpl(tpl, data);
+        console.log(str);
+        document.write(str);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>雨滴效果</title>
+
+	<script src="jquery-1.11.1.js"></script>
+</head>
+<body>
+	<button id="btn1">雷阵雨</button>
+<<<<<<< HEAD
+	<button id="btn2">stop</button>
+=======
+>>>>>>> 1d357b09a043e0c1790868d751fcfa3b5b323b17
+	<script>
+
+		var Rain = (function(){
+
+<<<<<<< HEAD
+			var type = 'normal';
+=======
+			
+>>>>>>> 1d357b09a043e0c1790868d751fcfa3b5b323b17
+
+			var winHeight = $(document).height()*2,
+				winWidth = $(document).width();
+
+			var timer = null;
+
+			function rainDrop(){
+
+				var $div = $("<div style='position: fixed; width: 13px; height: 13px; top: -13px;'><img src='http://gitlab.jirengu.com/uploads/company-sys/test-jirengu-com/5dcd85a204/dew-icon.png' alt=''/></div>");
+				$div.appendTo('body');
+
+				var stLeft = reRandom(0,winWidth),
+					posStart = {
+						left:stLeft,
+						top:'-13px'
+					},
+					posEnd = {
+						left:stLeft + reRandom(-50,50) ,
+						top: winHeight
+					};
+				//获得初始随机位置
+				$div.css(posStart);
+				//运动
+				$div.animate(posEnd,1000, function(){
+					$(this).remove();
+				});
+			}
+
+
+<<<<<<< HEAD
+			function start(t){
+				type = t;
+				var space = getSpaceFromType(type);
+				timer = setInterval(rainDrop,space);
+=======
+			function start(){
+
+				timer = setInterval(rainDrop,100);
+>>>>>>> 1d357b09a043e0c1790868d751fcfa3b5b323b17
+			}
+
+			function end(){
+				clearInterval(timer);
+			}
+
+			function reRandom (lowValue,highValue){
+				var choice=highValue-lowValue+1;
+				return Math.floor(Math.random()*choice+lowValue);
+			}
+
+<<<<<<< HEAD
+			function getSpaceFromType(type){
+				if(!type || type === 'normal'){
+					return 100;
+				}else if(type === 'slow'){
+					return 500;
+				}else if(type === 'fast'){
+					return 50;
+				}
+			}
+
+=======
+>>>>>>> 1d357b09a043e0c1790868d751fcfa3b5b323b17
+			return {
+				start: start,
+				end: end
+			}
+		})();
+
+		$("#btn1").on("click",function(){
+<<<<<<< HEAD
+			Rain.start('fast');
+		});
+
+		$("#btn2").on("click",function(){
+			Rain.end();
+		});
+=======
+			Rain.start();
+		});
+
+>>>>>>> 1d357b09a043e0c1790868d751fcfa3b5b323b17
+
+		// function rain(){
+		// 	//随机位置产生一个雨滴
+		// 	//雨滴按照直线下落
+		// 	//雨滴落到最底部消失
+		// 	var $div = $("<div><img src='dew-icon.png' alt=''/></div>");
+		// 	$div.appendTo('body');
+		// 	var $height = $(document).height();
+		// 	var $width = $(document).width();
+		// 	var stTop = reRandom(0,$height);	
+		// 	var stLeft = reRandom(0,$width);
+		// 	var start = {left:stLeft,top:stTop};
+		// 	var end = {left:stLeft,top:$height};
+		// 	//获得初始随机位置
+		// 	//$div.offset(start);
+		// 	$div.css(start);
+		// 	//运动
+		// 	$div.animate(end,500, function(){
+		// 		$(this).remove();
+		// 	});
+		// }
+		// //获得a,b之间的随机数字
+		// function reRandom (lowValue,highValue){
+		// 	var choice=highValue-lowValue+1;
+		// 	return Math.floor(Math.random()*choice+lowValue);
+		// }
+
+
+
+<<<<<<< HEAD
+		// // 1s增加一个雨滴
+		// // 雨滴不停的下
+		// // rain();
+=======
+		// 1s增加一个雨滴
+		// 雨滴不停的下
+		//rain();
+>>>>>>> 1d357b09a043e0c1790868d751fcfa3b5b323b17
+		// $("#btn1").on("click",function(){
+		// 	clearInterval(timer);
+		// 	var timer = setInterval(rain,100);
+		// });
+	</script>
+</body>
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style type="text/css">
+		.content{
+			position: relative;
+
+		}
+
+
+
+		.item{
+			width: 200px;
+			margin: 10px;
+			position: absolute;
+		}
+
+		.h1{
+			height: 200px;
+			background-color: #f4b300;
+		}
+
+		.h2{
+			height: 300px;
+			background-color: #691BB8;
+		}
+
+		.h3{
+			height: 400px;
+			background-color: #006ac1;
+		}
+
+		</style>
+<script type="text/javascript" src='http://code.jquery.com/jquery-1.11.0.min.js'>
+</script>
+<script type="text/javascript">
+
+$(document).ready(function(){
+
+
+	var WaterFall = {
+
+	    item: null,
+	    colHeightArray: [],
+      	clock: null,
+
+	    init: function(opts) {
+	        this.item = opts.item;
+	        this.render();
+	        this.bind();
+	    },
+
+	    render: function() {
+          console.log('render');
+	        this.colHeightArray = [];
+	        var winWidth = $(window).width(),
+	            itemList = this.item,
+	            colNum = Math.floor(winWidth / (itemList.outerWidth(true)));
+
+	        for (var i = 0; i < itemList.length; i++) {
+	            var item = itemList.eq(i),
+	                itemWidth = item.outerWidth(true),
+	                itemHeight = item.outerHeight(true);
+
+	           // console.log(item);
+	            if (i < colNum) {
+	                this.colHeightArray[i] = itemHeight;
+	                item.css({
+	                    'top': '0px',
+	                    'left': i * itemWidth + 'px'
+	                });
+
+	            } else {
+	                var idx = this.getMinVal(this.colHeightArray);
+	                item.css({
+	                    'top': 0 + this.colHeightArray[idx] + 'px',
+	                    'left': itemWidth * idx
+	                });
+	                this.colHeightArray[idx] += itemHeight;
+	            }
+
+	        }
+
+
+
+	    },
+
+
+
+	    bind: function() {
+	        var _this = this;
+	        $(window).on('resize', function() {
+              console.log('resize');
+              _this.clock && clearTimeout(_this.clock);
+             _this.clock = setTimeout(function(){
+                _this.render();
+              }, 1000);
+	            
+	        });
+
+	    },
+
+
+
+	    getMinVal: function(arr) {
+	        if (arr.length == 0)
+	            return false;
+	        var min = arr[0],
+	            idx = 0;
+
+	        for (var i = 0; i < arr.length; i++) {
+	            if (arr[i] < min) {
+	                idx = i;
+	            }
+	        }
+
+	        return idx;
+
+	    }
+
+	};
+
+	WaterFall.init({
+		item: $(".item")
+	});
+
+});
+		</script>
+		<title></title>
+	</head>
+	<body>
+		<div class="content">
+			<div class="item h1">
+				1
+			</div>
+			<div class="item h3">
+				2
+			</div>
+			<div class="item h2">
+				3
+			</div>
+			<div class="item h1">
+				4
+			</div>
+		<div class="item h1">
+				5
+			</div>
+		<div class="item h3">
+				6
+					</div>
+			<div class="item h3">
+				7
+			</div>
+			<div class="item h2">
+				8
+			</div>
+			<div class="item h1">
+				9
+			</div>
+			<!--<div class="item h3">
+				10
+			</div>
+			<div class="item h3">
+				11
+			</div>
+						<div class="item h3">
+				12
+			</div>
+			<div class="item h2">
+				13
+			</div>
+			<div class="item h2">
+				14
+			</div> -->
+		</div>
+	</body>
+</html>

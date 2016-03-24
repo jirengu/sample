@@ -1,0 +1,38 @@
+{
+  "name": "mockjs",
+  "title": "Mock.js",
+  "version": "0.1.11",
+  "homepage": "http://mockjs.com/",
+  "authors": [
+    "nuysoft <nuysoft@gmail.com>"
+  ],
+  "main": [
+    "dist/mock.js"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "jquery": "~2.1.1",
+    "bootstrap": "",
+    "codemirror": "~3.20.0",
+    "highlightjs": "~8.0.0",
+    "seajs": "*",
+    "js-beautify": "~1.5.1"
+  },
+  "_release": "0.1.11",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.1.11",
+    "commit": "d08e487201ecfd4cac64a4d1907f7e2b8e1dfd8b"
+  },
+  "_source": "git://github.com/nuysoft/Mock.git",
+  "_target": "~0.1.11",
+  "_originalSource": "mockjs",
+  "_direct": true
+}

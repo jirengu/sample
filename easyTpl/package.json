@@ -1,0 +1,32 @@
+{
+  "name": "easytpl",
+  "version": "1.0.4",
+  "description": "a simple JavaScript template engine",
+  "main": "lib/easyTpl.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "make tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/jirengu/easytpl.git"
+  },
+  "keywords": [
+    "JavaScript",
+    "template",
+    "engine",
+    "tpl"
+  ],
+  "author": "ruoyu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jirengu/easytpl/issues"
+  },
+  "homepage": "https://github.com/jirengu/easytpl#readme",
+  "devDependencies": {
+    "chai": "^1.8.1",
+    "mocha": "^2.3.4"
+  }
+}

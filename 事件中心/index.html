@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>事件中心</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<script type="text/javascript" src="../bower_components/jquery/dist/jquery.min.js"></script>
+</head>
+<body>
+
+	<input class="input1" type="text" />
+	<input class="input2" type="text" />
+	<p id="panel"></p>
+
+
+	<script type="text/javascript">
+
+		var EventCenter = (function(){
+
+			var events = {};
+
+			function on(evt, handler){
+				events[evt] = events[evt] || [];
+				events[evt].push({
+					handler: handler
+				});
+			}
+
+			function fire(evt, args){
+				if(!events[evt]){
+					return;
+				}
+				for(var i=0; i<events[evt].length; i++){
+					events[evt][i].handler(args);
+				}
+				
+			}
+
+			return {
+				on: on,
+				fire: fire
+			}
+		})();
+
+
+
+
+
+
+
+		EventCenter.on('text-change', function(data){
+			$('#panel').text(data);
+		});
+
+
+
+		$('.input1').on('change', function(data){
+			$('#panel').text(data);
+			//EventCenter.fire('text-change', [$(this).val()]);
+		})
+
+		$('.input2').on('change', function(data){
+			$('#panel').text(data);
+			//EventCenter.fire('text-change', [$(this).val()]);
+		})
+
+	</script>
+    
+</body>
+</html>

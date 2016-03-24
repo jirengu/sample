@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>双飞翼</title>
+	<style type="text/css">
+		#header, #footer{
+			height: 30px;
+			background: #ccc;
+		}
+		#left{
+			background: red;
+			height: 100px;
+		}
+		#center{
+			background: green;
+			height: 100px;
+		}
+		#right{
+			background: yellow;
+			height: 100px;
+		}
+	</style>
+
+
+	<style type="text/css">
+		body {
+		  min-width: 550px;     
+		}
+		#container {
+
+		}
+		.column{
+			float: left;
+		}
+		#center {
+		  width: 100%;
+		}
+		#left {
+		  width: 200px;                 
+		  margin-left: -100%;  /*对于浮动元素，负margin值等于100%可以让元素上去,并且和开始的位置头部对齐*/
+		}
+		#right {
+		  width: 150px;          
+		  margin-left: -150px;  /*对于浮动元素，负margin值等于本身可以让元素上去*/
+		}
+		#center .center-wrap{
+			margin-left:200px;
+			margin-right: 100px;
+		}
+		#footer {
+		  clear: both;
+		}
+
+	</style>
+</head>
+<body>
+	<div id="header">头部</div>
+	<div id="container">
+		<div id="center" class="column">
+			<div class="center-wrap"> 双飞翼布局指两边顶宽，中间自适应的三栏布局，中间栏要在放在文档流前面以优先渲染。</div>
+		</div>
+		<div id="left" class="column">左侧边栏，固定宽度</div>
+		<div id="right" class="column">右侧边栏，固定宽度</div>
+	</div>
+	<div id="footer">尾部</div>
+</body>
+</html>

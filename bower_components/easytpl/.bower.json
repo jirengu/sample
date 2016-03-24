@@ -1,0 +1,32 @@
+{
+  "name": "easytpl",
+  "description": "a simple JavaScript template engine",
+  "main": "index.js",
+  "authors": [
+    "ruoyu"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "JavaScript",
+    "template",
+    "engine",
+    "tpl"
+  ],
+  "homepage": "https://github.com/jirengu/easytpl",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ],
+  "_release": "ae51a3b344",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "ae51a3b34457276b74d8fdcb837217b07f32048d"
+  },
+  "_source": "git://github.com/jirengu/easytpl.git",
+  "_target": "*",
+  "_originalSource": "easytpl",
+  "_direct": true
+}

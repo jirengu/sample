@@ -1,0 +1,24 @@
+{
+  "name": "hunger-test",
+  "description": "hunger npm test demo",
+  "main": "./lib/index.js",
+  "authors": [
+    "ruoyu"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "hunger",
+    "valley",
+    "test",
+    "demo"
+  ],
+  "homepage": "https://github.com/jirengu/sample",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

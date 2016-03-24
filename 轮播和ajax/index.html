@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>轮播和ajax</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<style>
+	ul,li,p,h1,h2,h3,h4{
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	a{
+		text-decoration: none;
+		color: #333;
+	}
+	
+	.clearfix:after{
+		content: ' ';
+		display: block;
+		font-size: 0;
+		line-height: 0;
+		clear: both;
+	}
+
+	.btn{
+		display: inline-block;
+		padding: 5px 10px;
+		border: 1px solid #ccc;
+		border-radius: 3px;
+	}
+	.btn:hover{
+		background: #eee;
+	}
+	.btn:active{
+		background: #ccc;
+	}
+
+	.btn-change{
+		margin-bottom: 10px;
+	}
+
+	.products{
+		position: relative;
+		height: 200px;
+		overflow: hidden;
+	}
+	.products>ul{
+		position: absolute;
+		left: 0;
+		width: 10000px;
+		height: 200px;
+	}
+	.products .prod{
+		width: 200px;
+		margin-right: 1px;
+		float: left;
+	}
+	.products .prod img{
+		width: 200px;
+		height: 133px;
+	}
+	.products .prod h3{
+		font-size: 14px;
+		margin-top: 10px;
+	}
+	.products .prod p{
+		color: #999;
+		font-size: 12px;
+		margin-top: 10px;
+		margin-bottom: 20px;
+		white-space: nowrap;
+	    text-overflow: ellipsis;
+	    overflow: hidden;
+	}
+
+</style>
+
+
+<script src="../bower_components/jquery/dist/jquery.min.js"></script>
+
+<script src="../bower_components/mockjs/dist/mock.js"></script>
+
+</head>
+<body>
+ 
+
+<div id="products-area">
+	<a href="javascript:void(0)" class="btn btn-change">换一批</a>
+	<div class="products">
+		<ul class="clearfix">
+			<li class="prod">
+				<a href="#">
+					<img src="http://b.hiphotos.baidu.com/image/pic/item/0d338744ebf81a4c08033609d32a6059252da639.jpg" alt="">
+					<h3>产品标题</h3>
+					<p>这里是产品介绍，内容估计有点长</p>
+				</a>
+			</li>
+			<li class="prod">
+				<a href="#">
+					<img src="http://b.hiphotos.baidu.com/image/pic/item/0d338744ebf81a4c08033609d32a6059252da639.jpg" alt="">
+					<h3>产品标题</h3>
+					<p>这里是产品介绍，内容估计有点长</p>
+				</a>
+			</li>
+			<li class="prod">
+				<a href="#">
+					<img src="http://b.hiphotos.baidu.com/image/pic/item/0d338744ebf81a4c08033609d32a6059252da639.jpg" alt="">
+					<h3>产品标题</h3>
+					<p>这里是产品介绍，内容估计有点长</p>
+				</a>
+			</li>
+			<li class="prod">
+				<a href="#">
+					<img src="http://b.hiphotos.baidu.com/image/pic/item/0d338744ebf81a4c08033609d32a6059252da639.jpg" alt="">
+					<h3>产品标题</h3>
+					<p>这里是产品介绍，内容估计有点长</p>
+				</a>
+			</li>
+		</ul>	
+	</div>
+
+</div>
+
+<script>
+	
+// mock数据
+
+Mock.mock('http://jirengu.com', {
+	'products|4':[{
+		'title': '产品标题',
+		'desp': '这里是产品介绍，内容估计有点长',
+		'url': 'http://jirengu.com',
+		'img|+1': [
+			'http://s.cn.bing.net/th?id=OIP.M1839ae892fa30071a2ac050ae709c786o0&w=160&h=100&c=7&rs=1&qlt=90&pid=3.1&rm=2',
+			'http://s.cn.bing.net/th?id=OIP.M1ce3e4de289f3a19568d4b8baebf229bo0&w=180&h=100&c=7&rs=1&qlt=90&pid=3.1&rm=2',
+			'http://s.cn.bing.net/th?id=OIP.M5b9bfa9dec18cc55e93980c4f606bed2o0&w=173&h=108&c=7&rs=1&qlt=90&pid=3.1&rm=2',
+			'http://img2.imgtn.bdimg.com/it/u=2965961819,1126658289&fm=21&gp=0.jpg',
+			'http://tuan.cctcct.com/UploadFile/image/picture/20120429/2012042910193642.jpg',
+			'http://www.fansimg.com/uploads2011/04/userid297979time20110406113658.jpg'
+
+		]
+	}]
+});
+
+
+</script>
+
+
+
+<script>
+
+
+
+
+var CommendProducts = {
+
+	IMG_COUNT: 4, //用户可看到的图片个数
+	URL: 'http://jirengu.com',  //数据ajax接口， 本例是mock的数据
+
+
+	$productsWrap: $('#products-area .products'),
+	$productsCt: $('#products-area .products > ul'),
+	$changeBtn: $('#products-area .btn-change'),
+
+	
+
+	init: function(){
+		// 1. 根据需要展示的图片数量设置宽度
+		// 2. 加载一栏产品，不展示
+		// 3. 当用户点击时，展示产品，然后删除看不见的产品，再加载一栏产品
+		// 
+		this.productsCtWidth =  this.IMG_COUNT * this.$productsCt.find('.prod').outerWidth(true);
+		this.$productsWrap.width( this.productsCtWidth );
+
+		this.renderPatch();
+		this.bind();
+	},
+
+
+	bind: function(){
+		var me = this;
+		me.$changeBtn.on('click', function(){
+			if(!me.isRanderSuccess){
+				return;
+			}
+			if(me.$productsCt.is(":animated")){
+				return;
+			}
+			me.change();
+			me.renderPatch();
+		});
+	},
+
+	change: function(){
+		var me = this;
+		this.$productsCt.animate({
+			'left': 0-me.productsCtWidth
+		}, function(){
+			$('.prod').slice(0,4).remove();
+			$(this).css('left', 0);
+		});
+	},
+
+	getHtml: function(prod){
+		var tpl = 
+			'<li class="prod">'+
+				'<a href="{{url}}">'+
+					'<img src="{{img}}" alt="{{title}}">'+
+					'<h3>{{title}}</h3>'+
+					'<p>{{desp}}</p>'+
+				'</a>'+
+			'</li>';
+		console.log(tpl);
+		return easyTpl(tpl, prod);
+	},
+
+	renderPatch: function(){
+		var me  = this;
+		this.isRanderSuccess = false;  //做个兼容，万一数据加载失败
+		$.ajax({
+		    url: this.URL,
+		    dataType:'json'
+		    }).done(function(data){
+
+		     var products = data.products;
+		     var htmls = '';
+		     for(var i = 0; i<products.length; i++){
+		     	htmls += me.getHtml(products[i]);
+		     }
+		     me.$productsCt.append( htmls );
+		     me.isRanderSuccess = true;
+		});
+	}
+
+};
+
+
+CommendProducts.init();
+
+
+
+
+
+function easyTpl(tpl, data){
+    var re = /{{([^{}]+)?}}/g,
+        match, path, raw, token, lookup;
+
+    while(match = re.exec(tpl)){
+        token = match[1];
+        raw = match[0];
+        path = token.split(".");
+        lookup = data;
+
+        for (var i = 0 ; i < path.length; i++){
+            lookup = lookup[path[i]];
+            if (lookup === void 0){
+                throw "template error: '" + path[i] + "' not found in " + raw;
+            }
+        }
+        tpl = tpl.replace(raw, lookup);
+    }
+    return tpl;
+}
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

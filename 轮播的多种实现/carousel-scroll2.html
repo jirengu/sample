@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>一个简单的轮播</title>
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+  
+    <style type="text/css">
+      ul,li{
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      a{
+        text-decoration: none;
+      }
+      .carousel{
+        position: relative;
+        overflow: hidden;
+        height: 206px;
+      }
+      .carousel .img-ct:after{
+        content: ' ';
+        display: block;
+        clear: both;
+      }
+      .carousel .img-ct{
+        position: relative;
+        top: 0;
+        left: 0;
+      }
+      .carousel .img-ct > li{
+        display: none;
+      }
+      .carousel .img-ct > li.move{
+        display: block;
+      }
+      .carousel .img-ct > li.cur{
+        display: block;
+        position: absolute;
+        left: 0;
+      }
+      .carousel .img-ct > li.pre{
+        display: block;
+        position: absolute;
+        left: -310px;
+      }
+      .carousel .img-ct > li.next{
+        display: block;
+        position: absolute;
+        left: 310px;
+      }
+      .carousel .mov{
+        display: block;
+      }
+      .carousel .img-ct img{
+        width: 310px;
+        height: 206px;
+      }
+      .arrow{
+        position: absolute;
+          top: 50%;
+          margin-top: -15px;
+          width: 30px;
+          height: 30px;
+          line-height: 30px;
+          text-align: center;
+          background: #4E443C;
+          color: #fff;
+          border-radius: 30px;
+          box-shadow: 0 0 2px #999;
+          opacity: 0.8
+      }
+      .arrow:hover {
+          opacity: 1;
+      }
+      .pre{
+        left: 10px;
+      }
+      .next{
+        right: 10px;
+      }
+
+
+    </style>
+
+  </head>
+  <body>
+
+    <div class="carousel">
+      <ul class="img-ct">
+        <li><a href="#"><img src="imgs/1.jpg"></a></li>
+        <li><a href="#"><img src="imgs/2.jpg"></a></li>
+        <li><a href="#"><img src="imgs/3.jpg"></a></li>
+        <li><a href="#"><img src="imgs/4.jpg"></a></li>
+      </ul>
+      <a class="pre arrow" href="#"><</a>
+      <a class="next arrow" href="#">></a>
+    </div>
+
+
+    
+    <script type="text/javascript">
+    // $(function(){
+      
+      var $carousel = $('.carousel'),
+        $ct = $('.img-ct'),
+        $liArr = $('.img-ct li'),
+        $pre = $('.pre'),
+        $next = $('.next'),
+        imgWidth = $liArr.width(),
+        imgSize = $liArr.size();
+
+      var clock;
+
+      var idxArr = [];
+      for(var i=0;i<imgSize;i++){
+        idxArr.push(i);
+      }
+
+      $carousel.css('width', imgWidth* 1);
+      prepare();
+
+      $next.on('click', function(){
+        stopAuto();
+        playNext();
+        autoPlay();
+      });
+      $pre.on('click', function(){
+        stopAuto();
+        playPre();
+        autoPlay();
+      });
+
+      autoPlay();
+
+
+      function prepare(){
+        $liArr.removeClass('pre').removeClass('cur').removeClass('next');
+        $liArr.eq(idxArr[0]).addClass('pre');
+        $liArr.eq(idxArr[1]).addClass('cur');
+        $liArr.eq(idxArr[2]).addClass('next');
+        $liArr.removeAttr('style');
+      }
+
+      function stopAuto(){
+        clearInterval(clock);
+      }
+
+      function autoPlay(){
+        clock = setInterval(function(){
+          playNext();
+        }, 1000); 
+      }
+
+
+      function playNext(){
+        $liArr.eq(idxArr[1]).animate({left: '-='+imgWidth+'px'});
+        $liArr.eq(idxArr[2]).animate({left: '-='+imgWidth+'px'}, function(){
+          idxArr.push(idxArr.shift());
+          prepare();
+        });
+
+      }
+
+      function playPre(){
+        $liArr.eq(idxArr[0]).animate({left: '+='+imgWidth+'px'});
+        $liArr.eq(idxArr[1]).animate({left: '+='+imgWidth+'px'}, function(){
+          idxArr.unshift(idxArr.pop());
+          prepare();
+        });
+
+      }
+
+
+
+
+    // });
+    
+    </script>
+  </body>
+</html>

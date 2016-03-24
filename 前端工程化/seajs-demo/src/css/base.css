@@ -1,0 +1,25 @@
+@charset "UTF-8";
+/**
+ * 
+ * @authors hunger (hunger@jirengu.com)
+ * @date    2015-10-21 18:47:29
+ * @version $Id$
+ */
+html,body,ul,li,p{
+    margin: 0;
+    padding: 0;
+}
+.clearfix{
+    *zoom:1; 
+}
+.clearfix:after{
+    content: ' ';
+    display: block;
+    clear: both;
+}
+a{
+    text-decoration: none;
+}
+li{
+    list-style: none;
+}

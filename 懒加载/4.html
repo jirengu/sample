@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="http://kejian.jirengu.com/static/js/jquery-1.11.1.min.js"></script>
+
+  <meta charset="utf-8">
+  <title>懒加载-通用</title>
+  <style>
+    ul,li{
+      list-style:none;
+    }
+    .container{
+      width: 800px;
+      margin: 0 auto;
+    }
+    p{
+      line-height: 30px;
+    }
+  </style>
+</head>
+<body>
+<p>hello3</p>
+<p>hello4</p>
+<p>hello5</p>
+<p>hello6</p>
+<p>hello7</p>
+<p>hello9</p>
+<p>hello0</p>
+<p>hello11</p>
+<p>hello12</p>
+<p>hello13</p>
+<p>hello14</p>
+<p>hello15</p>
+<p>hello16</p>
+<p>hello17</p>
+<p>hello18</p>
+<p>hello19</p>
+<p>hello20</p>
+<p>hello21</p>
+<p>hello22</p>
+<p>hello23</p>
+<a href="#"><img src="http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/blank.jpg" data-src="http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/girl.jpg" /></a>
+
+<script type="text/javascript">
+
+
+function showImg($el){
+  $el.attr('src', $el.attr('data-src'));
+}
+
+var Exposure = {
+
+
+  one: function($selectors, callback){
+     this._add($selectors, callback);
+     this._init();
+  },
+
+  _queue: [],
+
+  /**
+   * [{
+   *   el: $e1,
+   *   cb: cb1
+   * },
+   * {
+   *   el: $e2,
+   *   cb: cb2
+   * }]
+   */
+
+  _isBind: false,
+
+  _add: function($selector, callback){
+    var me = this;
+    $selector.each(function(){
+      $cur = $(this);
+
+      var o = {
+        el: $cur,
+        cb: callback
+      };
+      me._queue.push(o);
+    });
+  },
+
+  _init: function(){
+    if(!this._isBind){
+      this._bind();
+    }
+    this._do();
+  },
+
+  _bind: function(){
+      
+      var me = this,
+          timer = null,
+          interval = 40;
+
+      $(window).on( 'scroll', function(e){
+            timer && clearTimeout( timer );
+            timer = setTimeout( function(){
+                me._do();
+            }, interval );
+      } );
+      
+      this._isBind = true;
+  },
+
+  _do: function(){
+
+    var me = this;
+    var arrTmp = [];
+    for(var i=0; i<this._queue.length; i++){
+      var item = this._queue[i]; 
+      if(this._isShow(item.el)){
+        item.cb.call(item.el[0]);
+      }else{
+        arrTmp.push(item);
+      }
+    }
+
+    this._queue = arrTmp;
+  },
+
+  _isShow: function($el){
+    var scrollH = $(document).scrollTop(),
+        winH = $(window).height(),
+        top = $el.offset().top ;
+
+    return  (top < winH + scrollH) ? true : false;
+  }
+
+}
+
+var $imgs = $('img');
+Exposure.one($imgs, function(){
+  showImg($(this));
+});
+
+Exposure.one( $('p'), function( el ){
+  console.log($(this).text());
+} );
+
+
+</script>
+  
+</body>
+</html>

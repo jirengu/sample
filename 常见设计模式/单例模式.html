@@ -1,0 +1,21 @@
+<script type="text/javascript">
+var Person = (function(){
+    var instance;
+    function Person() {    
+    }
+    Person.prototype.init = function(opts){
+      this.name = opts.name;
+      this.age = opts.age;
+    }
+    Person.prototype.sayName = function(){
+      console.log(this.name);
+    }
+
+    if (!instance) {
+        instance = new Person();
+    }
+    return instance;
+
+  };
+}());
+</script>

@@ -1,0 +1,1 @@
+function fun1(){alert("a.js")}function fun2(){alert("b.js")}fun1(),fun2();
