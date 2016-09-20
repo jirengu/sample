@@ -3,6 +3,18 @@
  */
 
 //define(id, ['jquery'], function($){ $('')  })
+//
+//
+//CMD
+// define(function(require, exports, module){
+// 	var jQuery = require('jquery');
+// 	var GoTop = require('com/gotop');
+// 	console.log(GoTop)
+
+// 	new GoTop();
+// })
+
+//AMD
 
 define(['jquery','com/gotop', 'com/event', 'com/carousel', 'com/exposure'], function($, GoTop, Event, Carousel, Exposure) {
 

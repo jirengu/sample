@@ -21,8 +21,6 @@
 })('Inc', function () {
 
     var inc = (function () {
-        "use strict";
-
         var a = 1;
 
         function inc(){
