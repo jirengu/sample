@@ -8,19 +8,13 @@
 </head>
 <body>
 	<button id="btn1">雷阵雨</button>
-<<<<<<< HEAD
+
 	<button id="btn2">stop</button>
-=======
->>>>>>> 1d357b09a043e0c1790868d751fcfa3b5b323b17
+
 	<script>
 
 		var Rain = (function(){
-
-<<<<<<< HEAD
 			var type = 'normal';
-=======
-			
->>>>>>> 1d357b09a043e0c1790868d751fcfa3b5b323b17
 
 			var winHeight = $(document).height()*2,
 				winWidth = $(document).width();
@@ -50,16 +44,11 @@
 			}
 
 
-<<<<<<< HEAD
+
 			function start(t){
 				type = t;
 				var space = getSpaceFromType(type);
 				timer = setInterval(rainDrop,space);
-=======
-			function start(){
-
-				timer = setInterval(rainDrop,100);
->>>>>>> 1d357b09a043e0c1790868d751fcfa3b5b323b17
 			}
 
 			function end(){
@@ -71,7 +60,6 @@
 				return Math.floor(Math.random()*choice+lowValue);
 			}
 
-<<<<<<< HEAD
 			function getSpaceFromType(type){
 				if(!type || type === 'normal'){
 					return 100;
@@ -82,8 +70,7 @@
 				}
 			}
 
-=======
->>>>>>> 1d357b09a043e0c1790868d751fcfa3b5b323b17
+
 			return {
 				start: start,
 				end: end
@@ -91,18 +78,14 @@
 		})();
 
 		$("#btn1").on("click",function(){
-<<<<<<< HEAD
+
 			Rain.start('fast');
 		});
 
 		$("#btn2").on("click",function(){
 			Rain.end();
 		});
-=======
-			Rain.start();
-		});
 
->>>>>>> 1d357b09a043e0c1790868d751fcfa3b5b323b17
 
 		// function rain(){
 		// 	//随机位置产生一个雨滴
@@ -131,16 +114,9 @@
 		// }
 
 
-
-<<<<<<< HEAD
 		// // 1s增加一个雨滴
 		// // 雨滴不停的下
 		// // rain();
-=======
-		// 1s增加一个雨滴
-		// 雨滴不停的下
-		//rain();
->>>>>>> 1d357b09a043e0c1790868d751fcfa3b5b323b17
 		// $("#btn1").on("click",function(){
 		// 	clearInterval(timer);
 		// 	var timer = setInterval(rain,100);
